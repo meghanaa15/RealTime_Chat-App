@@ -26,7 +26,17 @@ io.on("connection", (socket) => {
     console.log("A user connected");
 
     socket.on("chatMessage", (data) => {
+
+        data.username = data.username.trim();
+        data.message = data.message.trim();
+
         console.log("Message Received:", data);
+
+
+        if(!data.username || !data.message){
+            console.log("Username and message are required");
+            return;
+        }
 
         const sql = "INSERT INTO messages (username,message) VALUES (?,?)";
 
