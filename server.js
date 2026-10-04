@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 app.get("/messages",(req,res)=>{
 
-    const sql = "SELECT * FROM messages ORDER BY is ASC";
+    const sql = "SELECT * FROM messages ORDER BY id ASC";
 
     db.query(sql,(err,results)=>{
         if(err){
@@ -58,4 +58,5 @@ io.on("connection", (socket) => {
 httpServer.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
